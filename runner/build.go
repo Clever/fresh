@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 func build() (string, bool) {
@@ -16,7 +17,7 @@ func build() (string, bool) {
 	}
 
 	if settings.BuildArgs != "" {
-		args = append(args, settings.BuildArgs)
+		args = append(args, strings.Split(settings.BuildArgs, ",")...)
 	}
 
 	if settings.Root != "" {
